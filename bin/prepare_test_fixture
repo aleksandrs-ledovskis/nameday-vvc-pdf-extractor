@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "net/http"
+
+PDF_URL = "http://vvc.gov.lv/advantagecms/export/docs/komisijas/Vardadienu_saraksts_2018.pdf"
+
+puts "Downloading PDF from #{PDF_URL}"
+
+uri = URI(PDF_URL)
+
+Net::HTTP.start(uri.host, uri.port) do |http|
+  request = Net::HTTP::Get.new uri
+
+  http.request(request) do |response|
+    raise("Unexpected HTTP status code #{response.code}") unless response.code == "200"
+
+    puts "#{response["content-length"]} bytes"
+    magic_header = nil
+
+    open("test/fixtures/test.pdf", "w") do |io|
+      response.read_body do |chunk|
+        magic_header ||= chunk[0..3]
+        raise("Invalid PDF file download") unless magic_header == "%PDF"
+
+        print "."
+        io.write chunk
+      end
+    end
+  end
+end
+
+puts "\nDone!"
