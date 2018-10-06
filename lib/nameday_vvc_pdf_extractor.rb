@@ -75,12 +75,13 @@ module Nameday
     end
 
     def process_nameday_value(text_row)
-      nameday_data = text_row.split(" ")
-      day = nameday_data[0].to_i # Ignores ending dot
-      nameday_data[1..-1].each do |name|
+      nameday_data = text_row.split(".")
+      day = nameday_data[0].to_i
+
+      nameday_data[1].split(",").each do |name|
         next if name.match?(EMPTY_NAMEDAY_REGEXP)
         @output[@current_month_index][day] ||= []
-        @output[@current_month_index][day] << name.tr(",", "")
+        @output[@current_month_index][day] << name.strip
       end
     end
   end

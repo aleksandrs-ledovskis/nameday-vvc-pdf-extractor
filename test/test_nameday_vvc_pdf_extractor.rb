@@ -52,6 +52,17 @@ class TestVvcPdfExtractor < Minitest::Test
     assert_includes hash[11][18], "Aleksandrs"
   end
 
+  def test_extract_returns_correctly_split_names
+    hash = extract_result
+
+    names = hash.values.flat_map(&:values).flatten.compact
+    multi_uppercased_names = names.select do |name|
+      name.chars.count { |char| char =~ /\p{Upper}/ } > 1
+    end
+
+    assert_equal 0, multi_uppercased_names.size
+  end
+
   private
 
   def extract_result
