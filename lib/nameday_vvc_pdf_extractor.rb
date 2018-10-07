@@ -4,6 +4,8 @@ require "pdf-reader"
 require "date"
 
 module Nameday
+  # Use this class to extract structured nameday information
+  # from pre-existing VVC PDF file
   class VvcPdfExtractor
     EMPTY_NAMEDAY_REGEXP = /\p{Pd}/ # Unicode category "Punctuation: Dash"
     TEXT_ROW_DELIMITER = "\n"
@@ -26,6 +28,7 @@ module Nameday
     attr_reader :output
 
     def initialize
+      @pdf_reader = nil
       @output = {}
     end
 
@@ -35,6 +38,7 @@ module Nameday
 
     def extract
       raise("PDF not opened!") unless @pdf_reader
+
       process_pdf
       output
     end
@@ -53,16 +57,20 @@ module Nameday
 
     def process_pdf
       return unless @output == {}
+
       prepare_output
 
       @current_month_index = nil
       @pdf_reader.pages.each do |page|
-        process_pdf_page(page)
+        process_pdf_page_text(extract_text_from_pdf_page(page))
       end
     end
 
-    def process_pdf_page(pdf_page)
-      text_rows = pdf_page.text.split(TEXT_ROW_DELIMITER).map!(&:strip)
+    def extract_text_from_pdf_page(pdf_page)
+      pdf_page.text.split(TEXT_ROW_DELIMITER).map!(&:strip)
+    end
+
+    def process_pdf_page_text(text_rows)
       text_rows.each do |text_row|
         next if text_row.empty?
 
@@ -80,6 +88,7 @@ module Nameday
 
       nameday_data[1].split(",").each do |name|
         next if name.match?(EMPTY_NAMEDAY_REGEXP)
+
         @output[@current_month_index][day] ||= []
         @output[@current_month_index][day] << name.strip
       end
