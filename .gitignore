@@ -1,3 +1,5 @@
 *.gem
 *.pdf
 .byebug_history
+gems.locked
+coverage/
