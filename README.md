@@ -20,8 +20,7 @@ Check test file for available methods and order of calls.
 
 ```shell
 $ gem install -g
-$ bin/prepare_test_fixture
-$ ruby -I:lib test/test_nameday_vvc_pdf_extractor.rb
+$ rake
 ```
 
 ## License
