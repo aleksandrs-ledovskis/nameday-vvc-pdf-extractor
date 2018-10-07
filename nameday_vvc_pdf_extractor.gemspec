@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.license     = "BSD-3-Clause"
   s.name        = "nameday_vvc_pdf_extractor"
   s.summary     = "Nameday data extraction from Valsts valodas centrs PDF"
-  s.version     = "0.1.1"
+  s.version     = "0.1.2"
 
   s.required_ruby_version = "~> 2.0"
   s.add_runtime_dependency "pdf-reader", "~> 2.1"
