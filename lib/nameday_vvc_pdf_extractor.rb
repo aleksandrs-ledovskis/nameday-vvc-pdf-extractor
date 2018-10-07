@@ -61,24 +61,25 @@ module Nameday
       prepare_output
 
       @current_month_index = nil
-      @pdf_reader.pages.each do |page|
-        process_pdf_page_text(extract_text_from_pdf_page(page))
+      @pdf_reader.pages.each do |pdf_page|
+        process_pdf_page(pdf_page)
       end
     end
 
-    def extract_text_from_pdf_page(pdf_page)
-      pdf_page.text.split(TEXT_ROW_DELIMITER).map!(&:strip)
-    end
-
-    def process_pdf_page_text(text_rows)
+    def process_pdf_page(pdf_page)
+      text_rows = pdf_page.text.split(TEXT_ROW_DELIMITER).map(&:strip)
       text_rows.each do |text_row|
         next if text_row.empty?
 
-        if (new_month_index = MONTH_NAMES.index(text_row))
-          @current_month_index = new_month_index
-        elsif text_row.match?(/^\d+\./)
-          process_nameday_value(text_row)
-        end
+        process_text_row(text_row)
+      end
+    end
+
+    def process_text_row(text_row)
+      if (new_month_index = MONTH_NAMES.index(text_row))
+        @current_month_index = new_month_index
+      elsif text_row.match?(/^\d+\./)
+        process_nameday_value(text_row)
       end
     end
 
