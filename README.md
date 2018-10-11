@@ -2,6 +2,7 @@
 
 [![Travis CI](https://img.shields.io/travis/aleksandrs-ledovskis/nameday-vvc-pdf-extractor.svg?style=flat-square)](https://travis-ci.org/aleksandrs-ledovskis/nameday-vvc-pdf-extractor)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/aleksandrs-ledovskis/nameday-vvc-pdf-extractor.svg?style=flat-square)](https://codeclimate.com/github/aleksandrs-ledovskis/nameday-vvc-pdf-extractor)
+[![Codecov](https://img.shields.io/codecov/c/github/aleksandrs-ledovskis/nameday-vvc-pdf-extractor.svg?style=flat-square)](https://codecov.io/gh/aleksandrs-ledovskis/nameday-vvc-pdf-extractor)
 
 Ruby gem for extraction of Latvian name days from official [list](http://vvc.gov.lv/index.php?route=product/category&path=193_199) provided by _Valsts valodas centrs_.
 
