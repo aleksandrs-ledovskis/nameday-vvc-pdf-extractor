@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
-require "coveralls"
 require "simplecov"
-require "simplecov-console"
 
-Coveralls.wear!
+simplecov_formatter = if ENV["CONTINUOUS_INTEGRATION"]
+                        require "codecov"
+                        SimpleCov::Formatter::Codecov
+                      else
+                        require "simplecov-console"
+                        SimpleCov::Formatter::Console
+                      end
 
 SimpleCov.configure do
-  formatter SimpleCov::Formatter::Console
+  formatter simplecov_formatter
   root "lib"
 end
 
