@@ -8,7 +8,7 @@ Ruby gem for extraction of Latvian name days from official [list](http://vvc.gov
 
 As list is available only in PDF format, this gem knows how to deal with such data source.
 
-N.B. No guarantees are given that for future revisions of nameday list gem will work. It does as of 2019-10-06.
+N.B. No guarantees are given that for future revisions of nameday list gem will work. It does as of 2020-10-11.
 
 ## Usage
 
