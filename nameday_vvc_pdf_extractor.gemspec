@@ -2,7 +2,6 @@
 
 Gem::Specification.new do |s|
   s.authors     = ["Aleksandrs Ļedovskis"]
-  s.date        = "2018-10-06"
   s.email       = "aleksandrs@ledovskis.lv"
   s.files       = ["lib/nameday_vvc_pdf_extractor.rb"]
   s.homepage    = "https://github.com/aleksandrs-ledovskis/nameday-vvc-pdf-extractor"
@@ -13,4 +12,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.0"
   s.add_runtime_dependency "pdf-reader", "~> 2.1"
+
+  s.metadata["rubygems_mfa_required"] = "true"
 end

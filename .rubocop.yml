@@ -1,5 +1,11 @@
+AllCops:
+  NewCops: enable
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Bundler/GemFilename:
+  EnforcedStyle: "gems.rb"
 
 Gemspec/RequiredRubyVersion:
   Enabled: false

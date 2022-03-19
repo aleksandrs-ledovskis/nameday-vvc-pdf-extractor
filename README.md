@@ -6,9 +6,9 @@
 
 Ruby gem for extraction of Latvian name days from official [list](http://vvc.gov.lv/index.php?route=product/category&path=193_199) provided by _Valsts valodas centrs_.
 
-As list is available only in PDF format, this gem knows how to deal with such data source.
+As list is available only in PDF format (archived in [archive.org](https://web.archive.org/web/20220319122108/http://vvc.gov.lv/advantagecms/export/docs/komisijas/tradic_v%C4%81rdadienu_saraksts_2022.pdf) and [archive.today](https://archive.today/T5Wbd)), this gem knows how to deal with such data source.
 
-N.B. No guarantees are given that for future revisions of nameday list gem will work. It does as of 2020-10-11.
+N.B. No guarantees are given that for future revisions of nameday list gem will work. It does as of 2022-03-16.
 
 ## Usage
 

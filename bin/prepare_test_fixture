@@ -3,13 +3,13 @@
 
 require "net/http"
 
-PDF_URL = "http://vvc.gov.lv/advantagecms/export/docs/komisijas/Vardadienu_saraksts_2018.pdf"
+PDF_URL = "https://vvc.gov.lv/advantagecms/export/docs/komisijas/tradic_v%C4%81rdadienu_saraksts_2022.pdf"
 
 puts "Downloading PDF from #{PDF_URL}"
 
 uri = URI(PDF_URL)
 
-Net::HTTP.start(uri.host, uri.port) do |http|
+Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
   request = Net::HTTP::Get.new uri
 
   http.request(request) do |response|
@@ -21,8 +21,8 @@ Net::HTTP.start(uri.host, uri.port) do |http|
 
     open("test/fixtures/test.pdf", "w") do |io|
       response.read_body do |chunk|
-        magic_header ||= chunk[0..3]
-        raise("Invalid PDF file download") unless magic_header == "%PDF"
+        magic_header ||= chunk[0..3] unless chunk.empty?
+        raise("Invalid PDF file download") unless magic_header.nil? || magic_header == "%PDF"
 
         print "."
         io.write chunk

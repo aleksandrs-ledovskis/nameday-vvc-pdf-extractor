@@ -52,6 +52,24 @@ class TestVvcPdfExtractor < Minitest::Test
     assert_includes hash[11][18], "Aleksandrs"
   end
 
+  # 2022-03-16 batch
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def test_2022_batch_values
+    hash = extract_result
+
+    assert_includes hash[2][6], "Daris"
+    assert_includes hash[3][5], "Aurika"
+    assert_includes hash[3][17], "Gerhards"
+    assert_includes hash[4][6], "Dzintis"
+    assert_includes hash[4][20], "Meija"
+    assert_includes hash[4][23], "Jurgita"
+    assert_includes hash[9][17], "Vaiva"
+    assert_includes hash[9][29], "Jumis"
+    assert_includes hash[11][7], "Pērle"
+    assert_includes hash[12][3], "Ako"
+  end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+
   def test_extract_returns_correctly_split_names
     hash = extract_result
 
