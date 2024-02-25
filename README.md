@@ -1,8 +1,11 @@
-# Nameday VVC PDF extractor
+## Deprecated
 
-[![Travis CI](https://img.shields.io/travis/aleksandrs-ledovskis/nameday-vvc-pdf-extractor.svg?style=flat-square)](https://travis-ci.org/aleksandrs-ledovskis/nameday-vvc-pdf-extractor)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/aleksandrs-ledovskis/nameday-vvc-pdf-extractor.svg?style=flat-square)](https://codeclimate.com/github/aleksandrs-ledovskis/nameday-vvc-pdf-extractor)
-[![Codecov](https://img.shields.io/codecov/c/github/aleksandrs-ledovskis/nameday-vvc-pdf-extractor.svg?style=flat-square)](https://codecov.io/gh/aleksandrs-ledovskis/nameday-vvc-pdf-extractor)
+_Valsts valodas centrs_ is now publishing a [list](https://www.vvc.gov.lv/lv/media/157/download?attachment) of Latvian name days in machine readable format (CSV).
+The old PDF-based processing routines are therfore null and void.
+
+---
+
+# Nameday VVC PDF extractor
 
 Ruby gem for extraction of Latvian name days from official [list](https://www.vvc.gov.lv/lv/media/157/download?attachment) provided by _Valsts valodas centrs_.
 
